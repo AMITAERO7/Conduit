@@ -1,4 +1,4 @@
-package com.hackernight.api.model
+package com.hackernight.api.model.entities
 
 
 import com.squareup.moshi.Json

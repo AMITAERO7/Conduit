@@ -1,13 +1,13 @@
-package com.hackernight.api.model
+package com.hackernight.api.model.entities
 
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class Author(
+data class Profile(
     @Json(name = "bio")
-    val bio: String,
+    val bio: String?,
     @Json(name = "following")
     val following: Boolean,
     @Json(name = "image")
