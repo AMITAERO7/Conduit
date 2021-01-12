@@ -16,7 +16,6 @@ class FeedViewModel : ViewModel() {
         viewModelScope.launch {
             ArticleRepo.getGlobalFeed().body()?.let {
                 _feed.postValue(it.articles)
-                Log.d("FEED",it.articlesCount.toString())
             }
         }
     }

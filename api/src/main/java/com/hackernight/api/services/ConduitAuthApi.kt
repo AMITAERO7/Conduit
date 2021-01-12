@@ -1,6 +1,5 @@
 package com.hackernight.api.services
 
-import com.hackernight.api.model.requests.SignUpRequest
 import com.hackernight.api.model.requests.UserUpdateRequest
 import com.hackernight.api.model.responses.ArticleResponse
 import com.hackernight.api.model.responses.ArticlesResponse
