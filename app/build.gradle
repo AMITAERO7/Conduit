@@ -13,6 +13,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -44,9 +45,12 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.2'
+    implementation 'com.android.support:multidex:1.0.3'
+
 
     //TO USE OTHER MODULE ADD "::API"
     implementation project(":api")
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     //unit testing
     testImplementation 'junit:junit:4.+'

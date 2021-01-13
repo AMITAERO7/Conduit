@@ -27,14 +27,13 @@ class GlobalFeedFragment : Fragment() {
         feedViewModel = ViewModelProvider(this).get(FeedViewModel::class.java)
         val root  = inflater.inflate(R.layout.fragment_feed,container,false)
 
-
         feedRecyclerView = root.findViewById(R.id.feedRecyclerView)
         feedAdapter = ArticleFeedAdapter()
         feedRecyclerView.layoutManager = LinearLayoutManager(context)
         feedRecyclerView.adapter = feedAdapter
 
         feedViewModel.fetchGlobalFeed()
-        feedViewModel._feed.observe(viewLifecycleOwner, Observer {
+        feedViewModel.feed.observe(viewLifecycleOwner, Observer {
             feedAdapter.submitList(it)
         })
 
