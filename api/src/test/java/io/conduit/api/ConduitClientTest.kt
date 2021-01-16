@@ -15,7 +15,7 @@ class ConduitClientTest {
    @Test
    fun getArticles(){
        runBlocking {
-           val articles = conduitClient.api.getAllArticles()
+           val articles = conduitClient.publicApi.getAllArticles()
            assertNotNull(articles.body()?.articles)
        }
    }
@@ -24,7 +24,7 @@ class ConduitClientTest {
     @Test
     fun getArticlesByAuthor(){
         runBlocking {
-            val articles = conduitClient.api.getAllArticles(author = "444")
+            val articles = conduitClient.publicApi.getAllArticles(author = "444")
             assertNotNull(articles.body()?.articles)
         }
     }
@@ -33,7 +33,7 @@ class ConduitClientTest {
     @Test
     fun getArticlesByTags(){
         runBlocking {
-            val articles = conduitClient.api.getAllArticles(tag = "dragon")
+            val articles = conduitClient.publicApi.getAllArticles(tag = "dragon")
             assertNotNull(articles.body()?.articles)
         }
     }
@@ -42,7 +42,7 @@ class ConduitClientTest {
     fun singUpUser(){
         val userCreds = UserCreds("amitaero77@gmail.com","12345@amit","kumarami")
         runBlocking {
-            val resp = conduitClient.api.signUpUser(SignUpRequest(userCreds))
+            val resp = conduitClient.publicApi.signUpUser(SignUpRequest(userCreds))
             assertEquals(userCreds.username,resp.body()?.user?.username)
         }
     }

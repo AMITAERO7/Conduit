@@ -17,6 +17,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.hackernight.api.model.entities.User
+import com.hackernight.conduit.databinding.ActivityMainBinding
 import com.hackernight.conduit.ui.auth.AuthViewModel
 
 class MainActivity : AppCompatActivity() {

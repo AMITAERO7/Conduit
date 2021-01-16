@@ -2,18 +2,28 @@ package com.hackernight.api
 
 import com.hackernight.api.services.ConduitApi
 import com.hackernight.api.services.ConduitAuthApi
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.concurrent.TimeUnit
 
-class ConduitClient {
+object ConduitClient {
 
-    val retrofit = Retrofit.Builder()
+    val okhttpBuilder = OkHttpClient.Builder()
+        .readTimeout(5,TimeUnit.SECONDS)
+        .connectTimeout(2,TimeUnit.SECONDS)
+
+
+    val retrofitBuilder = Retrofit.Builder()
         .baseUrl("https://conduit.productionready.io/api/")
         .addConverterFactory(MoshiConverterFactory.create())
-        .build()
 
-    val api = retrofit.create(ConduitApi::class.java)
+    val publicApi = retrofitBuilder.client(okhttpBuilder.build())
+                        .build()
+                        .create(ConduitApi::class.java)
 
-    val authApi = retrofit.create(ConduitAuthApi::class.java)
+    val authApi = retrofitBuilder.client(okhttpBuilder.build())
+                        .build()
+                        .create(ConduitAuthApi::class.java)
 
 }

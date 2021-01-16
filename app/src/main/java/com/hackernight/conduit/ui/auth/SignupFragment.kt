@@ -10,7 +10,7 @@ import com.hackernight.conduit.R
 class SignupFragment :Fragment(){
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val root  = inflater.inflate(R.layout.fragment_signup,container,false)
+        val root  = inflater.inflate(R.layout.fragment_login_signup,container,false)
         return root
     }
     

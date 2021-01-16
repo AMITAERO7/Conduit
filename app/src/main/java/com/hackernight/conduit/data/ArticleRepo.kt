@@ -1,10 +1,9 @@
 package com.hackernight.conduit.data
 
 import com.hackernight.api.ConduitClient
-import com.hackernight.api.services.ConduitApi
 
 object ArticleRepo {
-    val api  = ConduitClient().api
+    val api  = ConduitClient().publicApi
 
     suspend fun getGlobalFeed() = api.getAllArticles()
 }

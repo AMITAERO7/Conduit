@@ -6,6 +6,7 @@ buildscript {
         retrofit_version = "2.9.0"
         moshi_version = "1.11.0"
         coroutine_version = "1.4.2"
+        okhttp_version = "4.9.0"
     }
 
     repositories {
