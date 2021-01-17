@@ -21,4 +21,12 @@ class AuthViewModel : ViewModel() {
             }
         }
     }
+
+    fun signUp(userName:String,email: String,password: String){
+        viewModelScope.launch {
+            UserRepo.signUp(userName,email, password)?.let {
+                _user.postValue(it.user)
+            }
+        }
+    }
 }

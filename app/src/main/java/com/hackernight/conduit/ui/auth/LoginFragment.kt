@@ -5,34 +5,41 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.button.MaterialButton
 import com.hackernight.conduit.R
+import com.hackernight.conduit.databinding.FragmentLoginSignupBinding
 
 class LoginFragment :Fragment(){
 
+    private var _binding : FragmentLoginSignupBinding? = null
     val authViewModel: AuthViewModel by activityViewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val root  = inflater.inflate(R.layout.fragment_login_signup,container,false)
-        return root
+        _binding = FragmentLoginSignupBinding.inflate(inflater,container,false)
+         _binding?.userEditText?.isVisible = false
+         return _binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val loginButton :MaterialButton = view.findViewById(R.id.loginButton)
-        val emailEditText : EditText = view.findViewById(R.id.emailEditText)
-        val passwordEditText : EditText = view.findViewById(R.id.passwordEditText)
-
-        loginButton.setOnClickListener {
-            authViewModel.login(
+        _binding?.apply {
+            submitButton.setOnClickListener {
+                authViewModel.login(
                     emailEditText.text.toString(),
                     passwordEditText.text.toString()
-            )
+                )
+            }
         }
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }
