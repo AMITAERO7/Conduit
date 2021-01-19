@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.hackernight.conduit.R
 import com.hackernight.conduit.databinding.FragmentLoginSignupBinding
+import com.hackernight.conduit.AuthViewModel
 
 class SignupFragment :Fragment(){
 

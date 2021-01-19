@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -15,18 +14,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hackernight.conduit.R
 import com.hackernight.conduit.databinding.FragmentFeedBinding
 
-class GlobalFeedFragment : Fragment() {
+class MyFeedFragment : Fragment() {
 
     private var _binding : FragmentFeedBinding? = null
     private lateinit var feedViewModel: FeedViewModel
     private lateinit var feedAdapter: ArticleFeedAdapter
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
-
         feedViewModel = ViewModelProvider(this).get(FeedViewModel::class.java)
         feedAdapter = ArticleFeedAdapter { openArticle(it) }
 
@@ -39,14 +37,14 @@ class GlobalFeedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        feedViewModel.fetchGlobalFeed()
+        feedViewModel.fetchMyFeed()
         feedViewModel.feed.observe(viewLifecycleOwner, Observer {
             feedAdapter.submitList(it)
         })
     }
 
     fun openArticle(articleId:String){
-        /*        findNavController().navigate(
+        /*findNavController().navigate(
                 R.id.action_navfeed_articlefragment,
                 bundleOf(
                         resources.getString(R.string.article_id) to articleId

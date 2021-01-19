@@ -4,13 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.google.android.material.button.MaterialButton
-import com.hackernight.conduit.R
 import com.hackernight.conduit.databinding.FragmentLoginSignupBinding
+import com.hackernight.conduit.AuthViewModel
 
 class LoginFragment :Fragment(){
 

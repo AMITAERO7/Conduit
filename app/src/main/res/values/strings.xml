@@ -7,9 +7,14 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_feed">Feed</string>
+    <string name="menu_feed">Global Feed</string>
+    <string name="menu_my_feed">My Feed</string>
+    <string name="menu_settings">Settings</string>
+
     <string name="menu_auth">Login/Sign-Up</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="article_id">ARTICLE_ID</string>
 
 </resources>

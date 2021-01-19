@@ -1,4 +1,4 @@
-package com.hackernight.conduit.ui.auth
+package com.hackernight.conduit
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -25,6 +25,14 @@ class AuthViewModel : ViewModel() {
     fun signUp(userName:String,email: String,password: String){
         viewModelScope.launch {
             UserRepo.signUp(userName,email, password)?.let {
+                _user.postValue(it.user)
+            }
+        }
+    }
+
+    fun updateUser(bio:String,userName: String,image:String,email: String,password: String){
+        viewModelScope.launch {
+            UserRepo.updateCurrentUser(bio,userName,image,email,password)?.let {
                 _user.postValue(it.user)
             }
         }

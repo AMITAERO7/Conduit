@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hackernight.api.model.entities.Article
 import com.hackernight.conduit.R
 
-class ArticleFeedAdapter : ListAdapter<Article, ArticleFeedAdapter.ArticleViewHolder>(
+class ArticleFeedAdapter(private val listener : (slug:String) -> Unit) : ListAdapter<Article, ArticleFeedAdapter.ArticleViewHolder>(
     object : DiffUtil.ItemCallback<Article>() {
     override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
         return oldItem == newItem
@@ -32,14 +32,18 @@ class ArticleFeedAdapter : ListAdapter<Article, ArticleFeedAdapter.ArticleViewHo
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         val article = getItem(position)
+
         holder.apply {
             authorTextView.text = article.author.username
             titleTextView.text = article.title
             bodyTextView.text = article.body
-            dateTextView.text = "15-Dec-20"
-            avatarImageView.background = ColorDrawable(Color.BLUE)
+            dateTextView.text = "15-Dec-20"  //TODO format actual date here !!!
+            avatarImageView.background = ColorDrawable(Color.BLUE) //TODO show real image here !!!
         }
+
+        holder.itemView.setOnClickListener { listener(article.slug) }
     }
+
 
     inner class ArticleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
        val authorTextView : TextView =  itemView.findViewById(R.id.authorTextView)
@@ -48,4 +52,5 @@ class ArticleFeedAdapter : ListAdapter<Article, ArticleFeedAdapter.ArticleViewHo
         val dateTextView : TextView = itemView.findViewById(R.id.dateTextView)
         val avatarImageView : ImageView = itemView.findViewById(R.id.avatarImageView)
     }
+
 }

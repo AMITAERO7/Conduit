@@ -1,5 +1,6 @@
 package com.hackernight.api
 
+import com.hackernight.api.interceptor.ConduitInterceptor
 import com.hackernight.api.services.ConduitApi
 import com.hackernight.api.services.ConduitAuthApi
 import okhttp3.OkHttpClient
@@ -22,7 +23,7 @@ object ConduitClient {
                         .build()
                         .create(ConduitApi::class.java)
 
-    val authApi = retrofitBuilder.client(okhttpBuilder.build())
+    val authApi = retrofitBuilder.client(okhttpBuilder.addInterceptor(ConduitInterceptor).build())
                         .build()
                         .create(ConduitAuthApi::class.java)
 

@@ -7,6 +7,7 @@ buildscript {
         moshi_version = "1.11.0"
         coroutine_version = "1.4.2"
         okhttp_version = "4.9.0"
+        nav_version = "2.3.2"
     }
 
     repositories {
@@ -19,6 +20,7 @@ buildscript {
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
     }
 }
 
