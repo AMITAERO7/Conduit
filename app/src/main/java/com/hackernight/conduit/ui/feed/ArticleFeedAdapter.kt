@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.hackernight.api.model.entities.Article
 import com.hackernight.conduit.R
+import com.hackernight.conduit.extension.loadImage
 
 class ArticleFeedAdapter(private val listener : (slug:String) -> Unit) : ListAdapter<Article, ArticleFeedAdapter.ArticleViewHolder>(
     object : DiffUtil.ItemCallback<Article>() {
@@ -38,7 +39,7 @@ class ArticleFeedAdapter(private val listener : (slug:String) -> Unit) : ListAda
             titleTextView.text = article.title
             bodyTextView.text = article.body
             dateTextView.text = "15-Dec-20"  //TODO format actual date here !!!
-            avatarImageView.background = ColorDrawable(Color.BLUE) //TODO show real image here !!!
+            avatarImageView.loadImage(article.author.image,true)
         }
 
         holder.itemView.setOnClickListener { listener(article.slug) }

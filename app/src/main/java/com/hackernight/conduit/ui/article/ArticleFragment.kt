@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.hackernight.conduit.databinding.FragmentArticleBinding
+import com.hackernight.conduit.extension.loadImage
 
 class ArticleFragment : Fragment() {
     private var _binding : FragmentArticleBinding? = null
@@ -41,6 +42,7 @@ class ArticleFragment : Fragment() {
                 bodyTextView.text = it.body
                 titleTextView.text = it.title
                 dateTextView.text = it.createdAt
+                avatarImageView.loadImage(it.author.image,true)
             }
         })
 

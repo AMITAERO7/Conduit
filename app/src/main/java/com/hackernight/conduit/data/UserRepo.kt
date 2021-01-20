@@ -15,16 +15,20 @@ object UserRepo {
     val api = ConduitClient.publicApi
     val authApi = ConduitClient.authApi
 
+    suspend fun getCurrentUser(token:String):UserResponse? {
+        ConduitInterceptor.authToken = token
+        val response = authApi.getCurrentUser()
+        return response.body()
+    }
+
     suspend fun login(email:String,password:String): UserResponse? {
         val response = api.loginUser(LoginRequest(UserLoginCreds(email,password)))
-        //TODO save it in shared preferences
         ConduitInterceptor.authToken = response.body()?.user?.token
         return response.body()
     }
 
     suspend fun signUp(userName:String,email: String,password: String):UserResponse?{
         val response = api.signUpUser(SignUpRequest(UserCreds(email,password,userName)))
-        //TODO save it in shared preferences
         ConduitInterceptor.authToken = response?.body()?.user?.token
         return response.body()
     }
