@@ -42,4 +42,5 @@ object UserRepo {
         val response = authApi.updateCurrentUser(UserUpdateRequest(UserUpdateData(bio,userName,image,email,password)))
         return response.body()
     }
+
 }

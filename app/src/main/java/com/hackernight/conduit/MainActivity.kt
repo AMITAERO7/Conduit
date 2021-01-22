@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -62,13 +63,16 @@ class MainActivity : AppCompatActivity() {
 
         authViewModel.user.observe(this, Observer {
             updateMenu(it)
-            navController.navigateUp()
-
             it?.token.let { t->
                 sharedPreferences.edit().apply {
                     putString(PREF_KEY_TOKEN,t).apply()
                 }
+            } ?: run {
+                sharedPreferences.edit().apply {
+                    remove(PREF_KEY_TOKEN)
+                }
             }
+            navController.navigateUp()
         })
 
     }
@@ -79,9 +83,20 @@ class MainActivity : AppCompatActivity() {
                 navView.menu.clear()
                 navView.inflateMenu(R.menu.activity_main)
             }else -> {
-
+                navView.menu.clear()
+                navView.inflateMenu(R.menu.activity_main_guest)
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.action_logout -> {
+                authViewModel.logoutUser()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

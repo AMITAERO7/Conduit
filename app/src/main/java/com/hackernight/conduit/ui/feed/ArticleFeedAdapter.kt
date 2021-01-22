@@ -38,7 +38,7 @@ class ArticleFeedAdapter(private val listener : (slug:String) -> Unit) : ListAda
             authorTextView.text = article.author.username
             titleTextView.text = article.title
             bodyTextView.text = article.body
-            dateTextView.text = "15-Dec-20"  //TODO format actual date here !!!
+            dateTextView.text = article.createdAt  //TODO format actual date here !!!
             avatarImageView.loadImage(article.author.image,true)
         }
 

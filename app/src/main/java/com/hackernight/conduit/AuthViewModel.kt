@@ -45,4 +45,8 @@ class AuthViewModel : ViewModel() {
             }
         }
     }
+
+    fun logoutUser(){
+        _user.postValue(null)
+    }
 }
